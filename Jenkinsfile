@@ -1,23 +1,11 @@
 pipeline {
-  agent any
+  agent {
+    docker 'python:3.6.1'
+  }
   stages {
     stage('Test') {
       steps {
-        parallel(
-          "Test": {
-            sh 'echo "Testing..."'
-            
-          },
-          "Unittests": {
-            sh 'echo "Unittests"'
-            
-          }
-        )
-      }
-    }
-    stage('Deploy') {
-      steps {
-        sh 'echo "Deploying..."'
+        sh 'python --version'
       }
     }
   }
