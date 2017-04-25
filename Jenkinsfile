@@ -3,14 +3,9 @@ pipeline {
     docker 'python:3.6.1'
   }
   stages {
-    stage('Virtualenv') {
-      steps {
-        sh 'virtualenv --no-site-packages .'
-      }
-    }
     stage('Install dependencies') {
       steps {
-        sh 'source bin/activate && pip install -r requirements.txt && deactivate'
+        sh 'pip install -r requirements.txt'
       }
     }
     stage('Test') {
